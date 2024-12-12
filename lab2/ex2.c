@@ -26,7 +26,7 @@ train->firstCar = NULL;
 }
  
 int isEmpty(Train *train){
-    return (train->size == 0);
+    return train->size == 0 ? 1 : 0;
 }
 
 void insertFirstCar(Car *car, Train *train){//////you have to initalize a car then you can insert it
@@ -76,5 +76,6 @@ int main (){
     return 0;
 
 }
+
 
 
