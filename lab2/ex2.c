@@ -29,21 +29,32 @@ int isEmpty(Train *train){
     return (train->size == 0);
 }
 
-void insertFirstCar(Car *car, Train *train){
+void insertFirstCar(Car *car, Train *train){//////you have to initalize a car then you can insert it
     if(isEmpty(train)){
         train->size ++;
         train->firstCar = car;
     }
 }
 
-void insertCar(Car *newcar, Car *previousCar,Train *train){
+void insertCar(Car *newcar, Car *previousCar,Train *train){//////you have to initalize a car then you can insert it
     newcar->nextCar = previousCar->nextCar;
     previousCar->nextCar = newcar;
     train->size ++;
 }
 
+void removeCar(Car *removed_car,Car *previoustCar, Train *train){
+    if(previoustCar== NULL && train->firstCar == removed_car){
+        train->firstCar = removed_car->nextCar;
+   }
+    else{
+        previoustCar->nextCar = removed_car->nextCar;
+   }
+    train->size --;
+    free(removed_car->id);
+    free(removed_car);
+}
 
-void displayTrain(Car *firstCar){
+void displayTrain(Car *firstCar){//////display all car from the inserted car
     Car *temp = firstCar;
     while(temp != NULL){
         printf("car id : %s, capacity is: %d\n",temp->id,temp->capacity);
@@ -60,7 +71,8 @@ int main (){
     // printf("%d",car1->capacity);
     insertFirstCar(car1,&train1);
     insertCar(car2,car1,&train1);
-    displayTrain(car1);
+    removeCar(car1,NULL,&train1);
+    displayTrain(car2);
     return 0;
 
 }
