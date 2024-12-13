@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-// Function to check if a number is prime
 int isPrime(int num) {
     if (num < 2) return 0;
     for (int i = 2; i * i <= num; i++) {
@@ -9,7 +8,6 @@ int isPrime(int num) {
     return 1;
 }
 
-// Function to check if a number is sphenic
 void isSphenic(int current,int num) {
     int temp = current;
     if(current > num) return;
